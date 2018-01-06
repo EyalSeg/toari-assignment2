@@ -13,7 +13,8 @@ the Controller will require input as defined in the assignemt. the following com
 1 - will move ~1 meter (if no obstacles are directly infront of the robot)
 2 - will rotate in place a gien amount of degrees.
 3 - will return the distance to the largest red object in the frame - ASSUMES THERE IS ATLEAST ONE RED OBJECT IN THE ROBOT'S FRAME
-4 - will send the arm towards the largest red object in the frame - ASSUMES THERE IS ATLEAST ONE RED OBJECT IN THE ROBOT'S FRAME
+4 - will move the robot towards the largest red object in the frame - ASSUMES THERE IS ATLEAST ONE RED OBJECT IN THE ROBOT'S FRAME
+5 - will send the arm towards the largest red object in the frame - ASSUMES THERE IS ATLEAST ONE RED OBJECT IN THE ROBOT'S FRAME
 
 KUDOS
 

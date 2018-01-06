@@ -61,8 +61,10 @@ def handleCommand(command):
     elif command == 3:
         print getDistanceToRedItem()
     elif command == 4:
-        #print findRedItem(0.1)
-        reach_red_item()
+        goto_red_item()
+        #print findRedItem(0.1)        
+    elif command == 5:
+        reach_red_item()        
     else:
         print "unknown command"
     
@@ -72,6 +74,19 @@ def getDistanceToRedItem():
     return numpy.linalg.norm(coordinates)
 
 
+def goto_red_item():
+    coordinates = get_red_item_coordinates()    
+    angle = math.atan2(coordinates[0], coordinates[2])
+    print("angle of red object: %.2f" % (angle/math.pi*180))
+    rotateDegrees(0.2, angle)
+    coordinates = get_red_item_coordinates()
+    distance = numpy.linalg.norm([coordinates[0], coordinates[2]])
+    print("planar distance to red object: %.2f" % distance)
+    distance -= 0.5
+    if distance > 0:
+        moveDistance(0.1, distance)
+        
+        
 def reach_red_item():
     coordinates = get_red_item_coordinates()
 
@@ -87,6 +102,7 @@ def reach_red_item():
 def get_red_item_coordinates():
     coordinates = rospy.wait_for_message("/object_detection/coordinates", Vector3)
     return [coordinates.x, coordinates.y, coordinates.z]
+
 
 def findRedItem(speed, clockwise = True):
     totalDegrees = 0
@@ -119,6 +135,7 @@ def getAngleToRedItem():
     
     return response.angle_offset
 
+
 def moveDistance(speed, distance):
     global obstaclesDecetor
     print obstaclesDecetor.getDistance()
@@ -138,6 +155,7 @@ def moveDistance(speed, distance):
 
         movement.moveForward(speed)
         rate.sleep()
+
 
 def rotateDegrees(speed, degressToRotate):
     clockwise = degressToRotate > 0
