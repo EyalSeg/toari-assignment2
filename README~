@@ -1,0 +1,20 @@
+this package is our submission for assigmnemts 2&3.
+
+HOW TO USE
+catkin_make
+launch the robot (gazeo/real robot)
+then:
+1. rosrun ass2 kinect_proc.py
+2. rosrun ass2 Controller.py
+
+it is adviced that kinect_proc.py will run on the same machine as the robot as it is listening to PointCloud which sends large messages over the net (will be slow).
+
+the Controller will require input as defined in the assignemt. the following commands are supported:
+1 - will move ~1 meter (if no obstacles are directly infront of the robot)
+2 - will rotate in place a gien amount of degrees.
+3 - will return the distance to the largest red object in the frame - ASSUMES THERE IS ATLEAST ONE RED OBJECT IN THE ROBOT'S FRAME
+4 - will send the arm towards the largest red object in the frame - ASSUMES THERE IS ATLEAST ONE RED OBJECT IN THE ROBOT'S FRAME
+
+KUDOS
+
+
